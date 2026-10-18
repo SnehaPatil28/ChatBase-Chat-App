@@ -1,10 +1,18 @@
 import express from "express";
-import authRoutes from "./routes/auth.route.js"
+import dotenv from "dotenv";
+
+import { connect_db } from "./lib/db.js";
+import authRoutes from "./routes/auth.route.js";
+
+dotenv.config();
 
 const app = express();
 
-app.use("/api/auth", authRoutes)
+const PORT = process.env.PORT;
 
-app.listen(5001, () => {
-  console.log("Backend Running on 5001")
+app.use("/api/auth", authRoutes);
+
+app.listen(PORT, () => {
+  console.log("Backend Running on 5001");
+  connect_db();
 });
