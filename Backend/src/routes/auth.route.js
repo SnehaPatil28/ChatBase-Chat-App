@@ -3,9 +3,9 @@ import { login, logout, signin } from "../controllers/auth.controller.js";
 
 const route = express.Router();
 
-route.get("/signup", signin);
+route.post("/signup", signin);
 
-route.get("/login", login);
+route.post("/login", login);
 
 route.get("/logout", logout);
 
